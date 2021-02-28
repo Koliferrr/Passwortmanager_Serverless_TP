@@ -6,3 +6,4 @@ So kann man wie gesagt nur einen Benutzer erstellen und dort nur Passwörter hin
 Um das Programm zu starten muss man einfach die index.html mit Google Chrome (oder einen anderen Browser) öffnen.
 Zuerst muss man sich registireren und dann einloggen. Nach dem Einloggen kommt man auch schon zu den Passwörtern. Hat man schon Passwörter gespeichert,
 so werden diese gleich angezeigt ansonsten kann man Neue hinzufügen.
+Lädt man die Seite neu so muss man sich erneut registrieren.
