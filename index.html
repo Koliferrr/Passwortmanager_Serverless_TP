@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>َAnimated Login Form</title>
+    <link rel="stylesheet" href="style.css">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <script>
+            login();
+
+            function login(name,pw) {
+                console.log(name+" "+pw);
+                document.getElementById("content").innerHTML = "";
+                var form = document.createElement("form");
+                form.className = "box";
+                var h1 = document.createElement("h1");
+                var t = document.createTextNode("Login");
+                h1.appendChild(t);
+                var username1 = document.createElement("input");
+                username1.type = "text";
+                username1.name = "";
+                username1.placeholder = "Username";
+                username1.id = "username";
+
+                var password11 = document.createElement("input");
+                password11.type = "password";
+                password11.name = "";
+                password11.placeholder = "Password";
+                password11.id = "password";
+
+                var btnreg1 = document.createElement("input");
+                btnreg1.type = "submit";
+                btnreg1.name = "";
+                btnreg1.value = "Registrieren";
+                btnreg1.id = "btnreg";
+
+                var btnlog = document.createElement("input");
+                btnlog.type = "submit";
+                btnlog.name = "";
+                btnlog.value = "Login";
+                btnlog.id = "login";
+
+                form.appendChild(h1);
+                form.appendChild(username1);
+                form.appendChild(password11);
+                form.appendChild(btnreg1);
+                form.appendChild(btnlog);
+                document.getElementById("content").appendChild(form);
+                
+                document.getElementById("login").addEventListener("click", function(){
+                            if (document.getElementById("username").value == name && document.getElementById("password").value == pw) {
+                                showtable(name,pw);
+                            } else{
+                                alert("Benutzername oder Kennwort nicht korrekt");
+                                login(name,pw);
+                            }
+                });
+
+            }
+
+            document.getElementById("btnreg").addEventListener("click", registrierung);
+
+
+            function registrierung() {
+                document.getElementById("content").innerHTML = "";
+                var formreg = document.createElement("form");
+                formreg.className = "box";
+                var h1 = document.createElement("h1");
+                var t = document.createTextNode("Registrierung");
+                h1.appendChild(t);
+                var username = document.createElement("input");
+                username.type = "text";
+                username.name = "";
+                username.placeholder = "Username";
+                username.id = "usernamereg";
+
+                var password1 = document.createElement("input");
+                password1.type = "password";
+                password1.name = "";
+                password1.placeholder = "Password";
+                password1.id = "password1reg";
+
+                var password2 = document.createElement("input");
+                password2.type = "password";
+                password2.name = "";
+                password2.placeholder = "Repeat Password";
+                password2.id = "password2reg";
+
+                var btnreg = document.createElement("input");
+                btnreg.type = "submit";
+                btnreg.name = "";
+                btnreg.value = "Registrieren";
+                btnreg.id = "btnreg";
+
+
+                formreg.appendChild(h1);
+                formreg.appendChild(username);
+                formreg.appendChild(password1);
+                formreg.appendChild(password2);
+                formreg.appendChild(btnreg);
+                document.getElementById("content").appendChild(formreg);
+                document.getElementById("btnreg").addEventListener("click", function() {
+
+                    if (document.getElementById("password1reg").value != "" && document.getElementById("password2reg").value != "" && document.getElementById("usernamereg").value != "") {
+                        if (document.getElementById("password1reg").value == document.getElementById("password2reg").value) {
+                            var name = document.getElementById("usernamereg").value;
+                            var pw = document.getElementById("password2reg").value;
+                            login(name,pw);
+                            alert("Erfolgreich Registriert");
+                        } else {
+                            alert("Passwörter müssen übereistimmen");
+                            registrierung();
+                        }
+                    } else {
+                        alert("Bitte Felder ausfüllen");
+                        registrierung();
+                    }
+
+                });
+            }
+
+            /*
+                        document.getElementById("login").addEventListener("click", checkuser);
+
+                        function checkuser() {
+                            if (document.getElementById("username").value == && document.getElementById("password").value == pws[j]) {
+                                var param = ids[j];
+                                showtable(param);
+                            } else {
+                                if (i + 1 == names.length) {
+                                    alert("Falsches Passwort oder Benutzername");
+                                }
+                            }
+                        }
+                        showtable();
+
+                        }
+            */
+            /*function gototable(names,pws,ids) {
+                for(var j=0;j<name.length;j++) {
+                    console.log("NAmen: "+names[j]);
+                if (document.getElementById("username").value == names[j] && document.getElementById("password").value == pws[j]) {
+                    var param=ids[j];
+                    showtable(param);
+                } else {
+                    if (i + 1 == names.length) {
+                        alert("Falsches Passwort oder Benutzername");
+                    }
+                }
+                }
+            }*/
+
+
+
+            function showtable(name,pw) {
+                document.getElementById("content").innerHTML = "";
+                var divaddpw = document.createElement("div");
+                divaddpw.id = "divaddpw";
+                var h1 = document.createElement("h1");
+                var t = document.createTextNode("Willkommen "+name);
+                h1.appendChild(t);
+                var addpw = document.createElement("form");
+                var sidename = document.createElement("input");
+                sidename.type = "text";
+                sidename.id = "sidename";
+                sidename.name = "Name";
+                sidename.placeholder = "Name";
+                var password = document.createElement("input");
+                password.type = "text";
+                password.id = "passwordid";
+                password.name = "Passwort";
+                password.placeholder = "Passwort";
+                var addpassword = document.createElement("input");
+                addpassword.type = "submit";
+                addpassword.value = "Add Passwort";
+                addpassword.id = "addpassword";
+                addpw.appendChild(sidename);
+                addpw.appendChild(password);
+                addpw.appendChild(addpassword);
+                divaddpw.appendChild(h1);
+                divaddpw.appendChild(addpw);
+                document.getElementById("content").appendChild(divaddpw);
+                var url = "https://75c58df6.eu-gb.apigw.appdomain.cloud/fallmerayer";
+                document.getElementById("addpassword").addEventListener("click", function() {
+                    var xhttp = new XMLHttpRequest();
+                    var array = {
+                        userid: "1",
+                        name: document.getElementById("sidename").value,
+                        comment: document.getElementById("passwordid").value,
+                        type: "pw"
+                    };
+                    var tosend = JSON.stringify(array);
+                    xhttp.open("PUT", url + "/entries", true);
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    xhttp.send(tosend);
+                    showtable(name,pw);
+                });
+
+                var divtable = document.createElement("div");
+                divtable.id = 'divtable';
+                var table = document.createElement("table");
+                table.className = "table table-striped table-bordered";
+                table.style = "width:100%";
+                var thead = document.createElement("thead");
+                thead.className = "thead-dark";
+                var trhead = document.createElement("tr");
+                var thname1 = document.createElement("th");
+                thname1.innerText = "Name";
+                thname1.scope = "col";
+                var thpwd1 = document.createElement("th");
+                thpwd1.scope = "col";
+                thpwd1.innerText = "Password";
+                trhead.appendChild(thname1);
+                trhead.appendChild(thpwd1);
+                thead.appendChild(trhead);
+                table.appendChild(thead);
+                var tbody = document.createElement("tbody");
+                tbody.id = "tablebody";
+                table.appendChild(tbody);
+                var foot = document.createElement("tfoot");
+                var trfoot = document.createElement("tr");
+                var thname2 = document.createElement("th");
+                thname2.innerText = "Name";
+                var thpwd2 = document.createElement("th");
+                thpwd2.innerText = "Password";
+                trfoot.appendChild(thname2);
+                trfoot.appendChild(thpwd2);
+                foot.appendChild(trfoot);
+                table.appendChild(foot);
+                var tbody = document.createElement("tbody");
+                tbody.setAttribute("id", "tbody");
+                table.appendChild(tbody);
+                divtable.appendChild(table);
+                document.getElementById("content").appendChild(divtable);
+                setTimeout(loadContent, 5000);
+
+                function loadContent() {
+                    var url = "https://75c58df6.eu-gb.apigw.appdomain.cloud/fallmerayer";
+                    document.getElementById("tbody").innerHTML = "";
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            var obj = JSON.parse(this.responseText);
+                            for (var i = 0; i < obj.entries.length; i++) {
+                                var trbody = document.createElement("tr");
+                                var thbody1 = document.createElement("th");
+                                thbody1.innerText = obj.entries[i].name;
+                                var thbody2 = document.createElement("th");
+                                thbody2.innerText = obj.entries[i].comment;
+                                trbody.appendChild(thbody1);
+                                trbody.appendChild(thbody2);
+                                tbody.appendChild(trbody);
+                            }
+                        }
+                    };
+                    xhttp.open("GET", url + "/entries", true);
+                    xhttp.send();
+                }
+            }
+            //<tbody>
+            //</tbody>
+
+        </script>
+    </div>
+</body>
+
+</html>
